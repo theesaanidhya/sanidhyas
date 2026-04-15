@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>theesaanidhya | Portfolio</title>
+    <title>theesaanidhya</title>
     <style>
         :root {
             --mac-bg: #c8c8c8;
@@ -31,8 +31,8 @@
         }
 
         .mac-window { 
-            width: 100%;
-            max-width: 680px; 
+            width: 640px;
+            height: 500px;
             border: 1.5px solid var(--mac-border); 
             border-radius: 6px; 
             overflow: hidden; 
@@ -69,28 +69,7 @@
             white-space: nowrap;
         }
 
-        .window-version { 
-            font-size: 11px; 
-            color: #888; 
-            margin-left: auto; 
-            cursor: help; 
-            position: relative; 
-        }
-        
-        .window-version:hover .tooltip { display: block; }
-        .tooltip { 
-            display: none; 
-            position: absolute; 
-            right: 0; 
-            top: 24px; 
-            background: #333; 
-            color: white; 
-            font-size: 10px; 
-            padding: 4px 8px; 
-            border-radius: 4px; 
-            white-space: nowrap; 
-            z-index: 100; 
-        }
+        .window-version { font-size: 11px; color: #888; margin-left: auto; position: relative; }
 
         .window-tabs { 
             display: flex; 
@@ -104,11 +83,8 @@
             border-right: 1px solid #ccc; 
             background: #f0f0f0; 
             cursor: pointer; 
-            font-family: inherit; 
             color: #555; 
-            transition: all 0.2s;
         }
-        .tab:hover { background: #e8e8e8; }
         .tab.active { 
             background: white; 
             color: #000; 
@@ -117,8 +93,8 @@
             margin-bottom: -1px;
         }
 
-        .window-content { flex-grow: 1; overflow-y: auto; max-height: 80vh; }
-        .tab-content { display: none; padding: 30px; }
+        .window-content { flex-grow: 1; overflow: hidden; }
+        .tab-content { display: none; padding: 20px 30px; }
         .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
 
         @keyframes fadeIn {
@@ -126,171 +102,54 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .profile-header { 
-            display: flex; 
-            align-items: center; 
-            gap: 24px; 
-            margin-bottom: 24px; 
-        }
+        .profile-header { display: flex; align-items: center; gap: 20px; margin-bottom: 15px; }
         .profile-photo-container { 
-            width: 100px; 
-            height: 100px; 
-            flex-shrink: 0; 
-            border: 2px solid #ddd; 
-            border-radius: 4px;
-            overflow: hidden; 
-            background: #eee;
+            width: 85px; height: 85px; flex-shrink: 0; border: 2px solid #ddd; border-radius: 4px;
+            overflow: hidden; background: #eee;
         }
         .profile-photo { width: 100%; height: 100%; object-fit: cover; }
-        .profile-text .name { font-size: 28px; font-weight: 700; color: #111; line-height: 1.2; }
-        .profile-text .tagline { font-size: 15px; color: #444; margin: 4px 0; }
-        .profile-text .age { font-size: 13px; color: #777; }
+        .profile-text .name { font-size: 24px; font-weight: 700; color: #111; }
+        .profile-text .tagline { font-size: 14px; color: #444; }
+        .profile-text .age { font-size: 12px; color: #777; }
 
-        .divider { border-top: 2px dotted #ccc; margin: 25px 0; }
+        .divider { border-top: 2px dotted #ccc; margin: 15px 0; }
 
-        .info-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-            gap: 16px; 
-        }
-        .info-box { 
-            border: 1px solid #ccc; 
-            padding: 18px; 
-            background: #fbfbfb; 
-            border-radius: 2px;
-        }
-        .info-box h3 { 
-            font-size: 11px; 
-            font-weight: 800; 
-            letter-spacing: 0.1em; 
-            color: #666; 
-            text-transform: uppercase; 
-            margin-bottom: 12px; 
-        }
-        .info-box p { font-size: 14px; margin-bottom: 6px; }
-        .info-box .sub { color: #888; font-size: 12px; }
-        .info-box a { color: var(--mac-accent); text-decoration: none; border-bottom: 1px solid transparent; }
-        .info-box a:hover { border-bottom: 1px solid var(--mac-accent); }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .info-box { border: 1px solid #ccc; padding: 12px; background: #fbfbfb; border-radius: 2px; }
+        .info-box h3 { font-size: 10px; font-weight: 800; color: #666; text-transform: uppercase; margin-bottom: 6px; }
+        .info-box p { font-size: 13px; margin-bottom: 4px; font-weight: 600; }
+        .info-box .sub { color: #888; font-size: 11px; }
+        .info-box a { color: var(--mac-accent); text-decoration: none; }
 
-        .contact-section h3 { font-size: 12px; font-weight: 800; color: #666; text-transform: uppercase; margin-bottom: 15px; }
-        .button-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .contact-section h3 { font-size: 10px; font-weight: 800; color: #666; text-transform: uppercase; margin-bottom: 10px; }
+        .button-group { display: flex; gap: 8px; flex-wrap: wrap; }
         .mac-button { 
-            padding: 8px 16px; 
-            border: 1px solid #bbb; 
-            background: #fff; 
-            font-size: 13px; 
-            cursor: pointer; 
-            color: #333; 
-            text-decoration: none; 
-            border-radius: 3px;
-            transition: all 0.15s;
+            padding: 6px 12px; border: 1px solid #bbb; background: #fff; font-size: 12px; 
+            cursor: pointer; color: #333; text-decoration: none; border-radius: 3px;
         }
-        .mac-button:hover { background: #f5f5f5; border-color: #999; transform: translateY(-1px); }
 
-        .folder-view { display: flex; flex-wrap: wrap; gap: 20px; padding-bottom: 20px; }
-        .folder-item { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            width: 100px;
-            cursor: pointer; 
-            padding: 12px; 
-            border-radius: 6px;
-            transition: background 0.2s;
-        }
+        .folder-view { display: flex; flex-wrap: wrap; gap: 15px; }
+        .folder-item { display: flex; flex-direction: column; align-items: center; width: 80px; cursor: pointer; padding: 10px; border-radius: 6px; }
         .folder-item:hover { background: #eee; }
-        .folder-icon { font-size: 42px; margin-bottom: 8px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
-        .folder-name { font-size: 12px; color: #333; text-align: center; font-weight: 500; }
+        .folder-icon { font-size: 32px; margin-bottom: 5px; }
+        .folder-name { font-size: 11px; color: #333; font-weight: 500; }
 
-        .game-window { 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
-            background: #111; 
-            position: relative;
-            overflow: hidden;
-        }
-        .game-header { 
-            background: #e8e8e8; 
-            padding: 8px 12px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid #ccc; 
-            color: #333;
-        }
-        .game-title { font-size: 12px; font-weight: 600; }
-        .close-game { background: white; border: 1px solid #ccc; font-size: 10px; cursor: pointer; padding: 2px 6px; border-radius: 3px; }
+        .game-window { border: 1px solid #ccc; border-radius: 4px; background: #111; overflow: hidden; }
+        .game-header { background: #e8e8e8; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; color: #333; }
+        .game-title { font-size: 11px; font-weight: 600; }
+        .close-game { background: white; border: 1px solid #ccc; font-size: 10px; cursor: pointer; padding: 2px 6px; }
 
-        .game-container { 
-            position: relative; 
-            background: #000; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
-        
-        #gameCanvas { 
-            max-width: 100%; 
-            height: auto; 
-            background: #000;
-        }
+        .game-container { position: relative; background: #000; display: flex; flex-direction: column; align-items: center; }
+        #gameCanvas { max-width: 100%; height: auto; }
 
         .game-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.85);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            z-index: 10;
-            text-align: center;
-            padding: 20px;
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85); display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: white; z-index: 10; text-align: center; padding: 20px;
         }
-
-        .game-overlay h2 { margin-bottom: 10px; font-size: 24px; color: #00ff00; }
-        .game-overlay p { margin-bottom: 20px; font-size: 14px; opacity: 0.8; }
-        .play-btn { 
-            background: #00ff00; 
-            color: black; 
-            border: none; 
-            padding: 10px 25px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        .mobile-controls {
-            display: none;
-            width: 100%;
-            justify-content: space-between;
-            padding: 15px;
-            background: #222;
-        }
-        
-        .mobile-btn {
-            width: 60px;
-            height: 60px;
-            background: #444;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            touch-action: manipulation;
-        }
-
-        @media (max-width: 600px) {
-            .mac-desktop { padding: 10px; }
-            .profile-header { flex-direction: column; text-align: center; gap: 15px; }
-            .info-grid { grid-template-columns: 1fr; }
-            .mobile-controls { display: flex; }
-            .game-overlay h2 { font-size: 18px; }
-        }
+        .game-overlay h2 { margin-bottom: 10px; font-size: 20px; color: #00ff00; }
+        .game-overlay p { margin-bottom: 15px; font-size: 12px; opacity: 0.8; }
+        .play-btn { background: #00ff00; color: black; border: none; padding: 8px 20px; font-weight: 700; cursor: pointer; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -303,8 +162,8 @@
                 <span class="control minimize"></span>
                 <span class="control maximize"></span>
             </div>
-            <span class="window-title">Sanidhya Sangle — Portfolio</span>
-            <span class="window-version">v1 <span class="tooltip">Latest Release</span></span>
+            <span class="window-title">Sanidhya Sangle</span>
+            <span class="window-version">v1</span>
         </div>
 
         <div class="window-tabs">
@@ -343,14 +202,13 @@
                 <div class="divider"></div>
 
                 <div class="contact-section">
-                    <h3>Connect with me</h3>
+                    <h3>Connect</h3>
                     <div class="button-group">
                         <a href="https://instagram.com/theesaanidhya" target="_blank" class="mac-button">Instagram</a>
                         <a href="https://x.com/ai4healthcare_" target="_blank" class="mac-button">Twitter</a>
                         <a href="mailto:iamsanidhya.720@gmail.com" class="mac-button">Email</a>
                         <a href="https://linkedin.com/in/theesaanidhya" target="_blank" class="mac-button">LinkedIn</a>
                         <a href="https://github.com/theesaanidhya" target="_blank" class="mac-button">GitHub</a>
-                        <a href="https://youtube.com/theesaanidhya" target="_blank" class="mac-button">YouTube</a>
                     </div>
                 </div>
             </div>
@@ -365,22 +223,16 @@
 
                 <div id="game-window" class="game-window" style="display:none;">
                     <div class="game-header">
-                        <span class="game-title">Space Invaders (Machine Gun Edition)</span>
+                        <span class="game-title">Space Invaders (Sniper Mode)</span>
                         <button class="close-game" onclick="closeGame()">✕</button>
                     </div>
                     <div class="game-container">
                         <div id="game-overlay" class="game-overlay">
                             <h2 id="overlay-title">SPACE INVADERS</h2>
-                            <p id="overlay-msg">Hold SPACE to fire machine gun! ← → to move</p>
+                            <p id="overlay-msg">Stop to Shoot! Hold SPACE while still. ← → to move</p>
                             <button class="play-btn" onclick="startGame()">Start Game</button>
                         </div>
-                        <canvas id="gameCanvas" width="560" height="360"></canvas>
-                        
-                        <div class="mobile-controls">
-                            <button class="mobile-btn" ontouchstart="keys['ArrowLeft']=true" ontouchend="keys['ArrowLeft']=false">←</button>
-                            <button class="mobile-btn" ontouchstart="keys[' ']=true" ontouchend="keys[' ']=false">🔥</button>
-                            <button class="mobile-btn" ontouchstart="keys['ArrowRight']=true" ontouchend="keys['ArrowRight']=false">→</button>
-                        </div>
+                        <canvas id="gameCanvas" width="560" height="300"></canvas>
                     </div>
                 </div>
             </div>
@@ -412,13 +264,13 @@
     let game = { 
         active: false, 
         score: 0, 
-        player: { x: 260, y: 320, width: 40, height: 20 }, 
+        player: { x: 260, y: 260, width: 40, height: 20 }, 
         bullets: [], 
         invaders: [], 
         invaderDirection: 1, 
-        invaderSpeed: 1.2, // Slightly faster to balance machine gun
+        invaderSpeed: 1.0, 
         lastShootTime: 0,
-        shootInterval: 120 // 120ms between shots (Machine Gun feel)
+        shootInterval: 150 
     };
 
     function openGame() {
@@ -434,17 +286,11 @@
 
     function initInvaders() {
         game.invaders = [];
-        const rows = 4;
+        const rows = 3;
         const cols = 8;
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < cols; c++) {
-                game.invaders.push({ 
-                    x: c * 55 + 60, 
-                    y: r * 35 + 40, 
-                    width: 30, 
-                    height: 20, 
-                    alive: true 
-                });
+                game.invaders.push({ x: c * 55 + 60, y: r * 35 + 40, width: 30, height: 20, alive: true });
             }
         }
     }
@@ -456,15 +302,13 @@
     window.addEventListener('keyup', e => keys[e.key] = false);
 
     function shoot() {
+        // Feature: Can't shoot while moving
+        const isMoving = keys['ArrowLeft'] || keys['ArrowRight'];
+        if (isMoving) return;
+
         const now = Date.now();
         if (now - game.lastShootTime >= game.shootInterval) {
-            game.bullets.push({ 
-                x: game.player.x + 18, 
-                y: game.player.y, 
-                width: 4, 
-                height: 12, 
-                speed: 8 
-            });
+            game.bullets.push({ x: game.player.x + 18, y: game.player.y, width: 4, height: 12, speed: 7 });
             game.lastShootTime = now;
         }
     }
@@ -475,8 +319,6 @@
         game.score = 0;
         game.bullets = [];
         game.player.x = canvas.width / 2 - 20;
-        game.invaderSpeed = 1.2;
-        game.invaderDirection = 1;
         initInvaders();
     }
 
@@ -491,13 +333,10 @@
     function update() {
         if (!game.active) return;
 
-        if (keys['ArrowLeft'] && game.player.x > 0) game.player.x -= 6;
-        if (keys['ArrowRight'] && game.player.x < canvas.width - game.player.width) game.player.x += 6;
+        if (keys['ArrowLeft'] && game.player.x > 0) game.player.x -= 5;
+        if (keys['ArrowRight'] && game.player.x < canvas.width - game.player.width) game.player.x += 5;
         
-        // Machine Gun Logic: If space is held, keep shooting
-        if (keys[' ']) {
-            shoot();
-        }
+        if (keys[' ']) shoot();
 
         game.bullets = game.bullets.filter(b => {
             b.y -= b.speed;
@@ -511,30 +350,20 @@
             if (!inv.alive) return;
             anyAlive = true;
             inv.x += game.invaderSpeed * game.invaderDirection;
-            
             if (inv.x <= 10 || inv.x >= canvas.width - inv.width - 10) hitEdge = true;
-            if (inv.y + inv.height >= game.player.y) {
-                gameOver(false);
-            }
+            if (inv.y + inv.height >= game.player.y) gameOver(false);
         });
 
         if (hitEdge) {
             game.invaderDirection *= -1;
-            game.invaders.forEach(inv => inv.y += 18);
-            game.invaderSpeed += 0.05;
+            game.invaders.forEach(inv => inv.y += 15);
         }
 
-        if (!anyAlive) {
-            gameOver(true);
-        }
+        if (!anyAlive) gameOver(true);
 
         game.bullets.forEach(b => {
             game.invaders.forEach(inv => {
-                if (inv.alive && 
-                    b.x < inv.x + inv.width && 
-                    b.x + b.width > inv.x && 
-                    b.y < inv.y + inv.height && 
-                    b.y + b.height > inv.y) {
+                if (inv.alive && b.x < inv.x + inv.width && b.x + b.width > inv.x && b.y < inv.y + inv.height && b.y + b.height > inv.y) {
                     inv.alive = false;
                     b.y = -100;
                     game.score += 10;
@@ -546,7 +375,6 @@
     function draw() {
         ctx.fillStyle = '#000';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
         if (!game.active && overlay.style.display === 'none') return;
 
         ctx.fillStyle = '#00ff00';
@@ -563,14 +391,11 @@
             if (!inv.alive) return;
             ctx.fillStyle = '#ff4444';
             ctx.fillRect(inv.x, inv.y, inv.width, inv.height);
-            ctx.fillStyle = '#000';
-            ctx.fillRect(inv.x + 5, inv.y + 5, 5, 5);
-            ctx.fillRect(inv.x + 20, inv.y + 5, 5, 5);
         });
 
         ctx.fillStyle = '#00ff00';
-        ctx.font = 'bold 16px Courier New';
-        ctx.fillText('SCORE: ' + game.score.toString().padStart(4, '0'), 15, 25);
+        ctx.font = 'bold 14px monospace';
+        ctx.fillText('SCORE: ' + game.score.toString().padStart(4, '0'), 15, 20);
     }
 
     function loop() {
@@ -578,7 +403,6 @@
         draw();
         requestAnimationFrame(loop);
     }
-
     loop();
 </script>
 </body>
