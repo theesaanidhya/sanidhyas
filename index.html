@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>theesaanidhya | Portfolio</title>
+    <title>theesaanidhya</title>
     <style>
         :root {
             --mac-bg: #c8c8c8;
@@ -19,38 +19,18 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
             background: #e0e0e0;
             color: #111;
-            /* Allow body to scroll instead of internal window div */
-            overflow-y: auto; 
-            min-height: 100vh;
-        }
-
-        /* Custom macOS-style scrollbar for the main page */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            border: 2px solid transparent;
-            background-clip: content-box;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            border: 2px solid transparent;
-            background-clip: content-box;
+            overflow: hidden; 
+            height: 100vh;
+            width: 100vw;
         }
 
         .mac-desktop { 
             background: var(--mac-bg); 
-            min-height: 100vh; 
+            height: 100vh; 
             display: flex; 
-            align-items: flex-start; /* Align to top to allow natural height expansion */
+            align-items: center; 
             justify-content: center; 
-            padding: 40px 20px; 
+            padding: 10px; 
         }
 
         .mac-window { 
@@ -63,11 +43,9 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.3); 
             display: flex;
             flex-direction: column;
-            
-            /* MacOS Genie/Paper opening animation */
             animation: macOpen 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
             transform-origin: bottom center;
-            height: auto; /* Let height be determined by content */
+            max-height: 95vh; 
         }
 
         @keyframes macOpen {
@@ -93,13 +71,13 @@
             display: flex; 
             align-items: center; 
             padding: 0 12px; 
-            height: 38px; 
+            height: 34px; 
             position: relative; 
             flex-shrink: 0;
         }
 
         .window-controls { display: flex; gap: 8px; align-items: center; }
-        .control { width: 12px; height: 12px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0,0,0,0.1); }
+        .control { width: 11px; height: 11px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0,0,0,0.1); }
         .control.close { background: #ff5f57; }
         .control.minimize { background: #febc2e; }
         .control.maximize { background: #28c840; }
@@ -108,35 +86,27 @@
             position: absolute; 
             left: 50%; 
             transform: translateX(-50%); 
-            font-size: 13px; 
+            font-size: 12px; 
             font-weight: 600; 
             color: white; 
-            white-space: nowrap;
         }
 
-        .window-version { 
-            font-size: 11px; 
-            color: #888; 
-            margin-left: auto; 
-            cursor: help; 
-            position: relative; 
-        }
+        .window-version { font-size: 10px; color: #888; margin-left: auto; }
 
         .window-tabs { 
             display: flex; 
             background: #f0f0f0; 
             border-bottom: 1px solid #ccc;
+            flex-shrink: 0;
         }
         .tab { 
-            padding: 12px 24px; 
-            font-size: 13px; 
+            padding: 8px 20px; 
+            font-size: 12px; 
             border: none; 
             border-right: 1px solid #ccc; 
             background: #f0f0f0; 
             cursor: pointer; 
-            font-family: inherit; 
             color: #555; 
-            transition: all 0.2s;
         }
         .tab.active { 
             background: white; 
@@ -146,124 +116,60 @@
             margin-bottom: -1px;
         }
 
-        .window-content { 
-            flex-grow: 1; 
-            overflow: visible; /* Remove internal scroll bar */
-        }
+        .window-content { flex-grow: 1; overflow: hidden; }
 
-        .tab-content { display: none; padding: 40px; }
-        .tab-content.active { 
-            display: block; 
-            animation: sheetEffect 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
+        .tab-content { display: none; padding: 20px 30px; }
+        .tab-content.active { display: block; animation: sheetEffect 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
         @keyframes sheetEffect {
-            from { opacity: 0; transform: translateY(20px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .profile-header { 
-            display: flex; 
-            align-items: center; 
-            gap: 32px; 
-            margin-bottom: 32px; 
-        }
+        .profile-header { display: flex; align-items: center; gap: 20px; margin-bottom: 15px; }
         .profile-photo-container { 
-            width: 120px; 
-            height: 120px; 
-            flex-shrink: 0; 
-            border-radius: 16px;
-            overflow: hidden; 
-            background: #eee;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            width: 90px; height: 90px; flex-shrink: 0; border-radius: 12px;
+            overflow: hidden; background: #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .profile-photo { width: 100%; height: 100%; object-fit: cover; }
-        .profile-text .name { font-size: 32px; font-weight: 800; color: #111; line-height: 1.1; margin-bottom: 8px; }
-        .profile-text .tagline { font-size: 17px; color: #444; margin-bottom: 8px; }
-        .profile-text .age { font-size: 14px; color: #777; }
+        .profile-text .name { font-size: 24px; font-weight: 800; color: #111; margin-bottom: 2px; }
+        .profile-text .tagline { font-size: 14px; color: #444; margin-bottom: 2px; }
+        .profile-text .age { font-size: 12px; color: #777; }
 
-        .divider { border-top: 1px solid #eee; margin: 30px 0; }
+        .divider { border-top: 1px solid #eee; margin: 15px 0; }
 
-        .info-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px; 
-        }
-        .info-box { 
-            border: 1px solid #eee; 
-            padding: 24px; 
-            background: #fdfdfd; 
-            border-radius: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .info-box:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .info-box h3 { 
-            font-size: 11px; 
-            font-weight: 800; 
-            letter-spacing: 0.12em; 
-            color: #999; 
-            text-transform: uppercase; 
-            margin-bottom: 16px; 
-        }
-        .info-box p { font-size: 15px; margin-bottom: 8px; font-weight: 500; }
-        .info-box .sub { color: #888; font-size: 13px; font-weight: 400; line-height: 1.4; }
-        .info-box a { color: var(--mac-accent); text-decoration: none; font-weight: 600; }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 15px; }
+        .info-box { border: 1px solid #eee; padding: 12px; background: #fdfdfd; border-radius: 8px; }
+        .info-box h3 { font-size: 9px; font-weight: 800; color: #999; text-transform: uppercase; margin-bottom: 4px; }
+        .info-box p { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+        .info-box .sub { color: #888; font-size: 11px; line-height: 1.2; }
+        .info-box a { color: var(--mac-accent); text-decoration: none; }
 
-        .contact-section h3 { font-size: 12px; font-weight: 800; color: #999; text-transform: uppercase; margin-bottom: 20px; }
-        .button-group { display: flex; gap: 12px; flex-wrap: wrap; }
+        .contact-section h3 { font-size: 10px; font-weight: 800; color: #999; text-transform: uppercase; margin-bottom: 10px; }
+        .button-group { display: flex; gap: 6px; flex-wrap: wrap; }
         .mac-button { 
-            padding: 10px 20px; 
-            border: 1px solid #ddd; 
-            background: #fff; 
-            font-size: 14px; 
-            font-weight: 500;
-            cursor: pointer; 
-            color: #333; 
-            text-decoration: none; 
-            border-radius: 8px;
-            transition: all 0.2s;
+            padding: 6px 12px; border: 1px solid #ddd; background: #fff; font-size: 12px; 
+            font-weight: 500; cursor: pointer; color: #333; text-decoration: none; border-radius: 5px;
         }
-        .mac-button:hover { background: #f8f8f8; border-color: #bbb; transform: scale(1.02); }
+        .mac-button:hover { background: #f8f8f8; border-color: #bbb; }
 
-        .folder-view { display: flex; flex-wrap: wrap; gap: 24px; padding-bottom: 20px; }
-        .folder-item { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            width: 110px;
-            cursor: pointer; 
-            padding: 16px; 
-            border-radius: 16px;
-            transition: background 0.2s;
-        }
+        /* Game View */
+        .folder-view { display: flex; flex-wrap: wrap; gap: 15px; }
+        .folder-item { display: flex; flex-direction: column; align-items: center; width: 80px; cursor: pointer; padding: 10px; border-radius: 10px; }
         .folder-item:hover { background: #f0f0f0; }
-        .folder-icon { font-size: 48px; margin-bottom: 10px; filter: drop-shadow(0 6px 8px rgba(0,0,0,0.1)); }
-        .folder-name { font-size: 13px; color: #333; text-align: center; font-weight: 500; }
+        .folder-icon { font-size: 32px; margin-bottom: 5px; }
+        .folder-name { font-size: 11px; color: #333; font-weight: 500; }
 
-        .game-window { 
-            border: 1px solid #333; 
-            border-radius: 12px; 
-            background: #111; 
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-        .game-header { 
-            background: #333; 
-            padding: 10px 16px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            color: #fff;
-        }
-        .game-title { font-size: 13px; font-weight: 600; font-family: monospace; }
-        .close-game { background: #444; border: none; color: white; cursor: pointer; padding: 4px 10px; border-radius: 4px; font-weight: bold; }
+        .game-window { border: 1px solid #333; border-radius: 10px; background: #111; overflow: hidden; }
+        .game-header { background: #333; padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; color: #fff; }
+        .game-title { font-size: 10px; font-family: monospace; }
+        .close-game { background: #444; border: none; color: white; cursor: pointer; padding: 2px 6px; border-radius: 4px; font-size: 9px; }
 
         @media (max-width: 600px) {
-            .mac-desktop { padding: 15px; align-items: flex-start; }
-            .profile-header { flex-direction: column; text-align: center; gap: 20px; }
+            .profile-header { gap: 12px; flex-direction: column; text-align: center; }
             .info-grid { grid-template-columns: 1fr; }
-            .tab-content { padding: 25px; }
+            .tab-content { padding: 15px; }
+            .mac-window { max-height: 98vh; }
         }
     </style>
 </head>
@@ -277,8 +183,8 @@
                 <span class="control minimize"></span>
                 <span class="control maximize"></span>
             </div>
-            <span class="window-title">Sanidhya Sangle — Portfolio</span>
-            <span class="window-version">v1/span>
+            <span class="window-title">Sanidhya Sangle</span>
+            <span class="window-version">v1</span>
         </div>
 
         <div class="window-tabs">
@@ -290,7 +196,7 @@
             <div id="profile-tab" class="tab-content active">
                 <div class="profile-header">
                     <div class="profile-photo-container">
-                        <img src="https://i.ibb.co/M521GM7X/sanidhya.png" alt="Sanidhya Sangle" class="profile-photo" onerror="this.src='https://via.placeholder.com/120?text=SS'">
+                        <img src="https://i.ibb.co/M521GM7X/sanidhya.png" alt="Sanidhya Sangle" class="profile-photo" onerror="this.src='https://via.placeholder.com/100?text=SS'">
                     </div>
                     <div class="profile-text">
                         <h1 class="name">Sanidhya Sangle</h1>
@@ -305,19 +211,17 @@
                     <div class="info-box">
                         <h3>Already Built</h3>
                         <p><a href="https://full-screen-kappa.vercel.app" target="_blank">Full Screen</a> &bull; <a href="https://study-surfer.vercel.app" target="_blank">Study Surf</a></p>
-                        <p class="sub">Minimalist hobby projects designed for focus and better utility.</p>
+                        <p class="sub">Minimalist hobby projects focused on utility.</p>
                     </div>
                     <div class="info-box">
                         <h3>Currently Building</h3>
                         <p><a href="https://bhakti-health.vercel.app" target="_blank">Bebalmy</a></p>
-                        <p class="sub">A next-gen mental health tool designed to provide personalized digital care.</p>
+                        <p class="sub">Next-gen digital mental health care tool.</p>
                     </div>
                 </div>
 
-                <div class="divider"></div>
-
                 <div class="contact-section">
-                    <h3>Connect with me</h3>
+                    <h3>Connect</h3>
                     <div class="button-group">
                         <a href="https://instagram.com/theesaanidhya" target="_blank" class="mac-button">Instagram</a>
                         <a href="https://x.com/ai4healthcare_" target="_blank" class="mac-button">Twitter</a>
@@ -341,13 +245,13 @@
                         <span class="game-title">SPACE_INVADERS_V1.EXE</span>
                         <button class="close-game" onclick="closeGame()">✕</button>
                     </div>
-                    <div class="game-container">
+                    <div class="game-container" style="position: relative; background: #000;">
                         <div id="game-overlay" class="game-overlay" style="display: flex; position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10; flex-direction:column; align-items:center; justify-content:center; color:white;">
-                            <h2 style="color:#00ff00; margin-bottom:10px;">NEON INVADERS</h2>
-                            <p style="margin-bottom:20px; font-size:14px; opacity:0.8;">Use Arrow Keys to Move & Space to Fire</p>
-                            <button class="play-btn" onclick="startGame()" style="background:#00ff00; color:black; border:none; padding:10px 20px; font-weight:bold; cursor:pointer; border-radius:4px;">ENGAGE</button>
+                            <h2 style="color:#00ff00; margin-bottom:5px; font-size:16px;">NEON INVADERS</h2>
+                            <p style="margin-bottom:12px; font-size:11px; opacity:0.8;">Arrows to Move • Space to Fire</p>
+                            <button class="play-btn" onclick="startGame()" style="background:#00ff00; color:black; border:none; padding:6px 12px; font-weight:bold; cursor:pointer; border-radius:4px; font-size:11px;">ENGAGE</button>
                         </div>
-                        <canvas id="gameCanvas" width="560" height="360" style="background:#000;"></canvas>
+                        <canvas id="gameCanvas" width="560" height="240" style="display: block; max-width: 100%; height: auto;"></canvas>
                     </div>
                 </div>
             </div>
@@ -366,12 +270,9 @@
             contents.forEach(c => c.classList.remove('active'));
             tab.classList.add('active');
             document.getElementById(target + '-tab').classList.add('active');
-            // Scroll to top of page on tab switch
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     });
 
-    // Game Logic (Simplified & Modular)
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const overlay = document.getElementById('game-overlay');
@@ -391,7 +292,6 @@
     function startGame() {
         overlay.style.display = 'none';
         gameActive = true;
-        // Simple loop placeholder
         requestAnimationFrame(gameLoop);
     }
 
@@ -400,8 +300,8 @@
         ctx.fillStyle = '#000';
         ctx.fillRect(0,0,canvas.width, canvas.height);
         ctx.fillStyle = '#00ff00';
-        ctx.font = '12px monospace';
-        ctx.fillText('GAME_LOADED: READY_TO_PLAY', 20, 30);
+        ctx.font = '10px monospace';
+        ctx.fillText('STATION_STABLE: DEFENSE_READY', 20, 25);
         requestAnimationFrame(gameLoop);
     }
 </script>
