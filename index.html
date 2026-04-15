@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>theesaanidhya</title>
     <style>
         :root {
@@ -19,29 +19,22 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
             background: #e0e0e0;
             color: #111;
-            overflow: hidden; /* Prevent body scroll, use window scroll */
-            position: fixed; /* Fix for mobile viewport shifts */
-            width: 100%;
-            height: 100%;
         }
 
         .mac-desktop { 
             background: var(--mac-bg); 
-            height: 100vh; 
-            height: 100svh; /* Modern mobile height */
+            min-height: 100vh; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            padding: 10px; 
+            padding: 20px; 
         }
 
         .mac-window { 
             width: 100%;
             max-width: 680px; 
-            height: 95%; /* Occupy most of the screen on mobile */
-            max-height: 800px;
             border: 1.5px solid var(--mac-border); 
-            border-radius: 8px; 
+            border-radius: 6px; 
             overflow: hidden; 
             background: var(--mac-content); 
             box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
@@ -58,7 +51,6 @@
             height: 38px; 
             position: relative; 
             flex-shrink: 0;
-            user-select: none;
         }
 
         .window-controls { display: flex; gap: 8px; align-items: center; }
@@ -104,11 +96,9 @@
             display: flex; 
             background: #f0f0f0; 
             border-bottom: 1px solid #ccc;
-            flex-shrink: 0;
         }
         .tab { 
-            flex: 1; /* Stretch tabs on mobile */
-            padding: 12px 10px; 
+            padding: 10px 24px; 
             font-size: 13px; 
             border: none; 
             border-right: 1px solid #ccc; 
@@ -117,9 +107,7 @@
             font-family: inherit; 
             color: #555; 
             transition: all 0.2s;
-            text-align: center;
         }
-        .tab:last-child { border-right: none; }
         .tab:hover { background: #e8e8e8; }
         .tab.active { 
             background: white; 
@@ -129,12 +117,8 @@
             margin-bottom: -1px;
         }
 
-        .window-content { 
-            flex-grow: 1; 
-            overflow-y: auto; 
-            -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
-        }
-        .tab-content { display: none; padding: 25px; }
+        .window-content { flex-grow: 1; overflow-y: auto; max-height: 80vh; }
+        .tab-content { display: none; padding: 30px; }
         .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
 
         @keyframes fadeIn {
@@ -145,80 +129,78 @@
         .profile-header { 
             display: flex; 
             align-items: center; 
-            gap: 20px; 
+            gap: 24px; 
             margin-bottom: 24px; 
         }
         .profile-photo-container { 
-            width: 90px; 
-            height: 90px; 
+            width: 100px; 
+            height: 100px; 
             flex-shrink: 0; 
             border: 2px solid #ddd; 
-            border-radius: 6px;
+            border-radius: 4px;
             overflow: hidden; 
             background: #eee;
         }
         .profile-photo { width: 100%; height: 100%; object-fit: cover; }
-        .profile-text .name { font-size: 24px; font-weight: 700; color: #111; line-height: 1.2; }
-        .profile-text .tagline { font-size: 14px; color: #444; margin: 4px 0; }
-        .profile-text .age { font-size: 12px; color: #777; }
+        .profile-text .name { font-size: 28px; font-weight: 700; color: #111; line-height: 1.2; }
+        .profile-text .tagline { font-size: 15px; color: #444; margin: 4px 0; }
+        .profile-text .age { font-size: 13px; color: #777; }
 
-        .divider { border-top: 2px dotted #ccc; margin: 20px 0; }
+        .divider { border-top: 2px dotted #ccc; margin: 25px 0; }
 
         .info-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 12px; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 16px; 
         }
         .info-box { 
             border: 1px solid #ccc; 
-            padding: 16px; 
+            padding: 18px; 
             background: #fbfbfb; 
-            border-radius: 4px;
+            border-radius: 2px;
         }
         .info-box h3 { 
-            font-size: 10px; 
+            font-size: 11px; 
             font-weight: 800; 
             letter-spacing: 0.1em; 
             color: #666; 
             text-transform: uppercase; 
-            margin-bottom: 10px; 
+            margin-bottom: 12px; 
         }
-        .info-box p { font-size: 14px; margin-bottom: 4px; line-height: 1.4; }
+        .info-box p { font-size: 14px; margin-bottom: 6px; }
         .info-box .sub { color: #888; font-size: 12px; }
         .info-box a { color: var(--mac-accent); text-decoration: none; border-bottom: 1px solid transparent; }
         .info-box a:hover { border-bottom: 1px solid var(--mac-accent); }
 
-        .contact-section h3 { font-size: 11px; font-weight: 800; color: #666; text-transform: uppercase; margin-bottom: 15px; }
-        .button-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .contact-section h3 { font-size: 12px; font-weight: 800; color: #666; text-transform: uppercase; margin-bottom: 15px; }
+        .button-group { display: flex; gap: 10px; flex-wrap: wrap; }
         .mac-button { 
-            padding: 10px 16px; 
+            padding: 8px 16px; 
             border: 1px solid #bbb; 
             background: #fff; 
             font-size: 13px; 
             cursor: pointer; 
             color: #333; 
             text-decoration: none; 
-            border-radius: 4px;
+            border-radius: 3px;
             transition: all 0.15s;
-            display: inline-block;
-            touch-action: manipulation;
         }
         .mac-button:hover { background: #f5f5f5; border-color: #999; transform: translateY(-1px); }
 
-        .folder-view { display: flex; flex-wrap: wrap; gap: 15px; padding-bottom: 20px; justify-content: center; }
+        .folder-view { display: flex; flex-wrap: wrap; gap: 20px; padding-bottom: 20px; }
         .folder-item { 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            width: 90px;
+            width: 100px;
             cursor: pointer; 
-            padding: 10px; 
+            padding: 12px; 
             border-radius: 6px;
             transition: background 0.2s;
         }
         .folder-item:hover { background: #eee; }
-        .folder-icon { font-size: 40px; margin-bottom: 8px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
-        .folder-name { font-size: 11px; color: #333; text-align: center; font-weight: 500; }
+        .folder-icon { font-size: 42px; margin-bottom: 8px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+        .folder-name { font-size: 12px; color: #333; text-align: center; font-weight: 500; }
 
         .game-window { 
             border: 1px solid #ccc; 
@@ -226,7 +208,6 @@
             background: #111; 
             position: relative;
             overflow: hidden;
-            width: 100%;
         }
         .game-header { 
             background: #e8e8e8; 
@@ -237,8 +218,8 @@
             border-bottom: 1px solid #ccc; 
             color: #333;
         }
-        .game-title { font-size: 11px; font-weight: 600; }
-        .close-game { background: white; border: 1px solid #ccc; font-size: 12px; cursor: pointer; padding: 2px 8px; border-radius: 3px; }
+        .game-title { font-size: 12px; font-weight: 600; }
+        .close-game { background: white; border: 1px solid #ccc; font-size: 10px; cursor: pointer; padding: 2px 6px; border-radius: 3px; }
 
         .game-container { 
             position: relative; 
@@ -246,15 +227,12 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            width: 100%;
         }
         
         #gameCanvas { 
-            display: block;
-            width: 100%;
+            max-width: 100%; 
             height: auto; 
             background: #000;
-            aspect-ratio: 560 / 360;
         }
 
         .game-overlay {
@@ -271,13 +249,13 @@
             padding: 20px;
         }
 
-        .game-overlay h2 { margin-bottom: 10px; font-size: clamp(18px, 5vw, 24px); color: #00ff00; }
-        .game-overlay p { margin-bottom: 20px; font-size: 13px; opacity: 0.8; line-height: 1.4; }
+        .game-overlay h2 { margin-bottom: 10px; font-size: 24px; color: #00ff00; }
+        .game-overlay p { margin-bottom: 20px; font-size: 14px; opacity: 0.8; }
         .play-btn { 
             background: #00ff00; 
             color: black; 
             border: none; 
-            padding: 12px 30px; 
+            padding: 10px 25px; 
             font-weight: 700; 
             cursor: pointer; 
             border-radius: 4px;
@@ -288,39 +266,39 @@
             display: none;
             width: 100%;
             justify-content: space-between;
-            padding: 15px 10px;
+            padding: 15px;
             background: #222;
-            gap: 10px;
         }
         
         .mobile-btn {
-            flex: 1;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             background: #444;
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
             touch-action: manipulation;
-            user-select: none;
         }
-        .mobile-btn:active { background: #666; }
 
-        /* Media Queries for Mobile Styling */
+        /* ONLY change: Mobile button group styling */
         @media (max-width: 600px) {
-            .mac-desktop { padding: 5px; }
-            .mac-window { height: 100%; border-radius: 0; border: none; }
-            .profile-header { flex-direction: column; text-align: center; gap: 12px; }
-            .profile-photo-container { margin: 0 auto; }
-            .info-grid { grid-template-columns: 1fr; }
+            .mac-desktop { padding: 10px; }
+            .button-group { 
+                flex-direction: column; 
+                gap: 8px; 
+            }
+            .mac-button { 
+                width: 100%; 
+                text-align: center; 
+                padding: 12px; 
+            }
             .mobile-controls { display: flex; }
-            .tab-content { padding: 20px 15px; }
-            .tab { padding: 12px 5px; font-size: 12px; }
-            .button-group { justify-content: center; }
-            .mac-button { flex: 1 1 45%; text-align: center; padding: 12px 8px; }
+            .profile-header { flex-direction: column; text-align: center; }
+            .info-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -396,7 +374,7 @@
 
                 <div id="game-window" class="game-window" style="display:none;">
                     <div class="game-header">
-                        <span class="game-title">Space Invaders</span>
+                        <span class="game-title">Space Invaders (Turret Mode)</span>
                         <button class="close-game" onclick="closeGame()">✕</button>
                     </div>
                     <div class="game-container">
@@ -408,9 +386,9 @@
                         <canvas id="gameCanvas" width="560" height="360"></canvas>
                         
                         <div class="mobile-controls">
-                            <button class="mobile-btn" ontouchstart="handleTouch('ArrowLeft', true)" ontouchend="handleTouch('ArrowLeft', false)">←</button>
-                            <button class="mobile-btn" ontouchstart="handleTouch(' ', true)" ontouchend="handleTouch(' ', false)">🔥</button>
-                            <button class="mobile-btn" ontouchstart="handleTouch('ArrowRight', true)" ontouchend="handleTouch('ArrowRight', false)">→</button>
+                            <button class="mobile-btn" ontouchstart="keys['ArrowLeft']=true" ontouchend="keys['ArrowLeft']=false">←</button>
+                            <button class="mobile-btn" ontouchstart="keys[' ']=true" ontouchend="keys[' ']=false">🔥</button>
+                            <button class="mobile-btn" ontouchstart="keys['ArrowRight']=true" ontouchend="keys['ArrowRight']=false">→</button>
                         </div>
                     </div>
                 </div>
@@ -420,7 +398,6 @@
 </div>
 
 <script>
-    // Tab System
     const tabs = document.querySelectorAll('.tab');
     const contents = document.querySelectorAll('.tab-content');
 
@@ -434,7 +411,6 @@
         });
     });
 
-    // Game Logic
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const overlay = document.getElementById('game-overlay');
@@ -463,12 +439,6 @@
         document.getElementById('folder-list').style.display = 'flex';
         document.getElementById('game-window').style.display = 'none';
         game.active = false;
-    }
-
-    function handleTouch(key, state) {
-        keys[key] = state;
-        // Prevent default touch behaviors like zooming or scrolling when playing
-        if (event) event.preventDefault();
     }
 
     function initInvaders() {
@@ -594,7 +564,6 @@
 
         if (!game.active && overlay.style.display === 'none') return;
 
-        // Player design
         ctx.fillStyle = '#00ff00';
         ctx.beginPath();
         ctx.moveTo(game.player.x + 20, game.player.y);
@@ -602,11 +571,9 @@
         ctx.lineTo(game.player.x, game.player.y + 20);
         ctx.fill();
 
-        // Bullets
         ctx.fillStyle = '#fff';
         game.bullets.forEach(b => ctx.fillRect(b.x, b.y, b.width, b.height));
 
-        // Invaders
         game.invaders.forEach(inv => {
             if (!inv.alive) return;
             ctx.fillStyle = '#ff4444';
@@ -616,7 +583,6 @@
             ctx.fillRect(inv.x + 20, inv.y + 5, 5, 5);
         });
 
-        // Score display
         ctx.fillStyle = '#00ff00';
         ctx.font = 'bold 16px Courier New';
         ctx.fillText('SCORE: ' + game.score.toString().padStart(4, '0'), 15, 25);
