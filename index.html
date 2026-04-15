@@ -1,217 +1,605 @@
-<head> <title>sanidhya S.</title> </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theesaanidhya | Portfolio</title>
+    <style>
+        :root {
+            --mac-bg: #c8c8c8;
+            --mac-border: #555;
+            --mac-header: #1a1a1a;
+            --mac-content: #ffffff;
+            --mac-accent: #1155cc;
+        }
 
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body-sim { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-  .mac-desktop { background: #c8c8c8; min-height: 520px; display: flex; align-items: center; justify-content: center; padding: 100px; }
-  .mac-window { width: 640px; border: 1.5px solid #555; border-radius: 4px; overflow: hidden; background: white; box-shadow: 2px 4px 16px rgba(0,0,0,0.18); }
-  .window-header { background: #1a1a1a; color: white; display: flex; align-items: center; padding: 0 12px; height: 34px; position: relative; }
-  .window-controls { display: flex; gap: 6px; align-items: center; }
-  .control { width: 12px; height: 12px; border-radius: 1px; display: inline-block; }
-  .control.close { background: #ff5f57; }
-  .control.minimize { background: #febc2e; }
-  .control.maximize { background: #28c840; }
-  .window-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 13px; font-weight: 500; color: white; }
-  .window-version { font-size: 12px; color: #aaa; margin-left: auto; cursor: pointer; position: relative; }
-  .window-version:hover .tooltip { display: block; }
-  .tooltip { display: none; position: absolute; right: 0; top: 20px; background: #333; color: white; font-size: 11px; padding: 4px 8px; border-radius: 3px; white-space: nowrap; z-index: 10; }
-  .window-tabs { display: flex; border-bottom: 1px solid #ccc; background: #e8e8e8; }
-  .tab { padding: 8px 20px; font-size: 13px; border: none; border-right: 1px solid #ccc; background: #e8e8e8; cursor: pointer; font-family: inherit; color: #333; }
-  .tab.active { background: white; border-bottom: 2px solid white; color: #111; }
-  .window-content { background: white; }
-  .tab-content { display: none; padding: 28px; }
-  .tab-content.active { display: block; }
-  .profile-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 22px; }
-  .profile-photo-container { width: 88px; height: 88px; flex-shrink: 0; border: 1px solid #ccc; overflow: hidden; }
-  .profile-photo { width: 100%; height: 100%; object-fit: cover; }
-  .profile-text { padding-top: 4px; }
-  .name { font-size: 26px; font-weight: 600; color: #111; margin-bottom: 5px; }
-  .tagline { font-size: 14px; color: #333; margin-bottom: 4px; }
-  .age { font-size: 13px; color: #666; }
-  .divider { border-top: 2px dotted #bbb; margin: 0 0 22px; }
-  .info-section { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
-  .info-box { border: 1px solid #bbb; padding: 16px; background: #fafafa; }
-  .info-box h3 { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; color: #111; text-transform: uppercase; margin-bottom: 10px; }
-  .info-box p { font-size: 13px; color: #333; margin-bottom: 4px; }
-  .info-box p.sub { color: #555; font-size: 12px; }
-  .info-box a { color: #1155cc; text-decoration: underline; }
-  .contact-section h3 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #111; text-transform: uppercase; margin-bottom: 14px; }
-  .button-group { display: flex; gap: 8px; flex-wrap: wrap; }
-  .mac-button { padding: 7px 16px; border: 1px solid #aaa; background: white; font-size: 13px; cursor: pointer; font-family: inherit; color: #222; text-decoration: none; display: inline-block; }
-  .mac-button:hover { background: #f0f0f0; }
-  .folder-view { display: flex; flex-wrap: wrap; gap: 16px; padding: 8px 0 20px; }
-  .folder-item { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; padding: 8px; border-radius: 4px; }
-  .folder-item:hover { background: #f0f0f0; }
-  .folder-icon { font-size: 36px; }
-  .folder-name { font-size: 12px; color: #333; text-align: center; }
-  .game-window { border: 1px solid #bbb; border-radius: 4px; overflow: hidden; }
-  .game-header { background: #e8e8e8; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ccc; }
-  .game-title { font-size: 13px; font-weight: 500; }
-  .close-game { background: none; border: 1px solid #aaa; font-size: 12px; cursor: pointer; padding: 2px 8px; border-radius: 2px; }
-  .game-container { background: #000; display: flex; flex-direction: column; align-items: center; padding: 10px; gap: 10px; }
-  .game-controls { color: #ccc; font-size: 12px; display: flex; gap: 12px; align-items: center; }
-  .game-controls button { background: #333; color: white; border: 1px solid #666; padding: 4px 12px; cursor: pointer; font-size: 12px; border-radius: 2px; }
-  #gameCanvas { display: block; border: 1px solid #333; }
-</style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background: #e0e0e0;
+            color: #111;
+        }
+
+        .mac-desktop { 
+            background: var(--mac-bg); 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 20px; 
+        }
+
+        .mac-window { 
+            width: 100%;
+            max-width: 680px; 
+            border: 1.5px solid var(--mac-border); 
+            border-radius: 6px; 
+            overflow: hidden; 
+            background: var(--mac-content); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .window-header { 
+            background: var(--mac-header); 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 12px; 
+            height: 38px; 
+            position: relative; 
+            flex-shrink: 0;
+        }
+
+        .window-controls { display: flex; gap: 8px; align-items: center; }
+        .control { width: 12px; height: 12px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0,0,0,0.1); }
+        .control.close { background: #ff5f57; }
+        .control.minimize { background: #febc2e; }
+        .control.maximize { background: #28c840; }
+        
+        .window-title { 
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            font-size: 13px; 
+            font-weight: 600; 
+            color: white; 
+            white-space: nowrap;
+        }
+
+        .window-version { 
+            font-size: 11px; 
+            color: #888; 
+            margin-left: auto; 
+            cursor: help; 
+            position: relative; 
+        }
+        
+        .window-version:hover .tooltip { display: block; }
+        .tooltip { 
+            display: none; 
+            position: absolute; 
+            right: 0; 
+            top: 24px; 
+            background: #333; 
+            color: white; 
+            font-size: 10px; 
+            padding: 4px 8px; 
+            border-radius: 4px; 
+            white-space: nowrap; 
+            z-index: 100; 
+        }
+
+        /* Tabs */
+        .window-tabs { 
+            display: flex; 
+            background: #f0f0f0; 
+            border-bottom: 1px solid #ccc;
+        }
+        .tab { 
+            padding: 10px 24px; 
+            font-size: 13px; 
+            border: none; 
+            border-right: 1px solid #ccc; 
+            background: #f0f0f0; 
+            cursor: pointer; 
+            font-family: inherit; 
+            color: #555; 
+            transition: all 0.2s;
+        }
+        .tab:hover { background: #e8e8e8; }
+        .tab.active { 
+            background: white; 
+            color: #000; 
+            font-weight: 600;
+            border-bottom: 2px solid white;
+            margin-bottom: -1px;
+        }
+
+        /* Content */
+        .window-content { flex-grow: 1; overflow-y: auto; max-height: 80vh; }
+        .tab-content { display: none; padding: 30px; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 24px; 
+            margin-bottom: 24px; 
+        }
+        .profile-photo-container { 
+            width: 100px; 
+            height: 100px; 
+            flex-shrink: 0; 
+            border: 2px solid #ddd; 
+            border-radius: 4px;
+            overflow: hidden; 
+            background: #eee;
+        }
+        .profile-photo { width: 100%; height: 100%; object-fit: cover; }
+        .profile-text .name { font-size: 28px; font-weight: 700; color: #111; line-height: 1.2; }
+        .profile-text .tagline { font-size: 15px; color: #444; margin: 4px 0; }
+        .profile-text .age { font-size: 13px; color: #777; }
+
+        .divider { border-top: 2px dotted #ccc; margin: 25px 0; }
+
+        .info-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 16px; 
+        }
+        .info-box { 
+            border: 1px solid #ccc; 
+            padding: 18px; 
+            background: #fbfbfb; 
+            border-radius: 2px;
+        }
+        .info-box h3 { 
+            font-size: 11px; 
+            font-weight: 800; 
+            letter-spacing: 0.1em; 
+            color: #666; 
+            text-transform: uppercase; 
+            margin-bottom: 12px; 
+        }
+        .info-box p { font-size: 14px; margin-bottom: 6px; }
+        .info-box .sub { color: #888; font-size: 12px; }
+        .info-box a { color: var(--mac-accent); text-decoration: none; border-bottom: 1px solid transparent; }
+        .info-box a:hover { border-bottom: 1px solid var(--mac-accent); }
+
+        .contact-section h3 { font-size: 12px; font-weight: 800; color: #666; text-transform: uppercase; margin-bottom: 15px; }
+        .button-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .mac-button { 
+            padding: 8px 16px; 
+            border: 1px solid #bbb; 
+            background: #fff; 
+            font-size: 13px; 
+            cursor: pointer; 
+            color: #333; 
+            text-decoration: none; 
+            border-radius: 3px;
+            transition: all 0.15s;
+        }
+        .mac-button:hover { background: #f5f5f5; border-color: #999; transform: translateY(-1px); }
+
+        /* Game UI */
+        .folder-view { display: flex; flex-wrap: wrap; gap: 20px; padding-bottom: 20px; }
+        .folder-item { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100px;
+            cursor: pointer; 
+            padding: 12px; 
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .folder-item:hover { background: #eee; }
+        .folder-icon { font-size: 42px; margin-bottom: 8px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+        .folder-name { font-size: 12px; color: #333; text-align: center; font-weight: 500; }
+
+        .game-window { 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            background: #111; 
+            position: relative;
+            overflow: hidden;
+        }
+        .game-header { 
+            background: #e8e8e8; 
+            padding: 8px 12px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #ccc; 
+            color: #333;
+        }
+        .game-title { font-size: 12px; font-weight: 600; }
+        .close-game { background: white; border: 1px solid #ccc; font-size: 10px; cursor: pointer; padding: 2px 6px; border-radius: 3px; }
+
+        .game-container { 
+            position: relative; 
+            background: #000; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        
+        #gameCanvas { 
+            max-width: 100%; 
+            height: auto; 
+            background: #000;
+        }
+
+        .game-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .game-overlay h2 { margin-bottom: 10px; font-size: 24px; color: #00ff00; }
+        .game-overlay p { margin-bottom: 20px; font-size: 14px; opacity: 0.8; }
+        .play-btn { 
+            background: #00ff00; 
+            color: black; 
+            border: none; 
+            padding: 10px 25px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .mobile-controls {
+            display: none;
+            width: 100%;
+            justify-content: space-between;
+            padding: 15px;
+            background: #222;
+        }
+        
+        .mobile-btn {
+            width: 60px;
+            height: 60px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            touch-action: manipulation;
+        }
+
+        @media (max-width: 600px) {
+            .mac-desktop { padding: 10px; }
+            .profile-header { flex-direction: column; text-align: center; gap: 15px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .mobile-controls { display: flex; }
+            .game-overlay h2 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
 
 <div class="mac-desktop">
-  <div class="mac-window">
-    <div class="window-header">
-      <div class="window-controls">
-        <span class="control close"></span>
-        <span class="control minimize"></span>
-        <span class="control maximize"></span>
-      </div>
-      <span class="window-title">Sanidhya Sangle</span>
-      <span class="window-version">v1.0 <span class="tooltip">soon</span></span>
-    </div>
-
-    <div class="window-tabs">
-      <button class="tab active" onclick="showTab('profile', this)">Profile</button>
-      <button class="tab" onclick="showTab('games', this)">Games</button>
-    </div>
-
-    <main class="window-content">
-      <div id="profile-tab" class="tab-content active">
-        <div class="profile-header">
-          <div class="profile-photo-container">
-            <img src="https://i.ibb.co/M521GM7X/sanidhya.png" alt="Profile" class="profile-photo">
-          </div>
-          <div class="profile-text">
-            <h1 class="name">Sanidhya Sangle</h1>
-            <p class="tagline">building what I love </p>
-            <p class="age">18 (2007) • Nashik, India</p>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="info-section">
-          <div class="info-box">
-            <h3>Already Built</h3>
-            <p><a href="full-screen-kappa.vercel.app" target="_blank">full screen</a> • <a href="study-surfer.vercel.app" target="_blank">study surf</a></p>
-            <p class="sub">hobby projects</p>
-          </div>
-          <div class="info-box">
-            <h3>Currently Building</h3>
-            <p><a href="bhakti-health.vercel.app" target="_blank">bebalmy</a></p>
-            <p class="sub">a mental health tool</p>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="contact-section">
-          <h3>Connect</h3>
-          <div class="button-group">
-            <a href="http://instagram.com/theesaanidhya" target="_blank" class="mac-button">Instagram</a>
-            <a href="https://x.com/ai4healthcare_" target="_blank" class="mac-button">Twitter</a>
-            <a href="mailto:iamsanidhya.720@gmail.com" class="mac-button">Email</a>
-            <a href="http://youtube.com/rap" target="_blank" class="mac-button">YouTube</a>
-            <a href="https://linkedin.com/in/theesaanidhya" target="_blank" class="mac-button">LinkedIn</a>
-           <a href="https://github.com/theesaanidhya" target="_blank" class="mac-button">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div id="games-tab" class="tab-content">
-        <div class="folder-view">
-          <div class="folder-item" onclick="openGame()">
-            <div class="folder-icon">👾</div>
-            <p class="folder-name">Space Invaders</p>
-          </div>
-        </div>
-        <div id="game-window" class="game-window" style="display:none;">
-          <div class="game-header">
-            <span class="game-title">Space Invaders</span>
-            <button class="close-game" onclick="closeGame()">✕</button>
-          </div>
-          <div class="game-container">
-            <canvas id="gameCanvas" width="560" height="360"></canvas>
-            <div class="game-controls">
-              <p>← → to move &nbsp;|&nbsp; SPACE to shoot</p>
-              <button onclick="startGame()">Start Game</button>
+    <div class="mac-window">
+        <!-- Header -->
+        <div class="window-header">
+            <div class="window-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
             </div>
-          </div>
+            <span class="window-title">Sanidhya Sangle — Portfolio</span>
+            <span class="window-version">v1.1 <span class="tooltip">Latest Release</span></span>
         </div>
-      </div>
-    </main>
-  </div>
+
+        <!-- Navigation -->
+        <div class="window-tabs">
+            <button class="tab active" data-tab="profile">Profile</button>
+            <button class="tab" data-tab="games">Games</button>
+        </div>
+
+        <!-- Main Area -->
+        <main class="window-content">
+            <!-- Profile Tab -->
+            <div id="profile-tab" class="tab-content active">
+                <div class="profile-header">
+                    <div class="profile-photo-container">
+                        <img src="https://i.ibb.co/M521GM7X/sanidhya.png" alt="Sanidhya Sangle" class="profile-photo" onerror="this.src='https://via.placeholder.com/100?text=SS'">
+                    </div>
+                    <div class="profile-text">
+                        <h1 class="name">Sanidhya Sangle</h1>
+                        <p class="tagline">Building what I love, one pixel at a time.</p>
+                        <p class="age">18 (2007) • Nashik, India</p>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-grid">
+                    <div class="info-box">
+                        <h3>Already Built</h3>
+                        <p><a href="https://full-screen-kappa.vercel.app" target="_blank">Full Screen</a> &bull; <a href="https://study-surfer.vercel.app" target="_blank">Study Surf</a></p>
+                        <p class="sub">Hobby projects focused on utility.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Currently Building</h3>
+                        <p><a href="https://bhakti-health.vercel.app" target="_blank">Bebalmy</a></p>
+                        <p class="sub">A next-gen mental health tool.</p>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="contact-section">
+                    <h3>Connect with me</h3>
+                    <div class="button-group">
+                        <a href="https://instagram.com/theesaanidhya" target="_blank" class="mac-button">Instagram</a>
+                        <a href="https://x.com/ai4healthcare_" target="_blank" class="mac-button">Twitter</a>
+                        <a href="mailto:iamsanidhya.720@gmail.com" class="mac-button">Email</a>
+                        <a href="https://linkedin.com/in/theesaanidhya" target="_blank" class="mac-button">LinkedIn</a>
+                        <a href="https://github.com/theesaanidhya" target="_blank" class="mac-button">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Games Tab -->
+            <div id="games-tab" class="tab-content">
+                <div class="folder-view" id="folder-list">
+                    <div class="folder-item" onclick="openGame()">
+                        <div class="folder-icon">👾</div>
+                        <p class="folder-name">Space Invaders</p>
+                    </div>
+                </div>
+
+                <!-- Game Container -->
+                <div id="game-window" class="game-window" style="display:none;">
+                    <div class="game-header">
+                        <span class="game-title">Space Invaders</span>
+                        <button class="close-game" onclick="closeGame()">✕</button>
+                    </div>
+                    <div class="game-container">
+                        <div id="game-overlay" class="game-overlay">
+                            <h2 id="overlay-title">SPACE INVADERS</h2>
+                            <p id="overlay-msg">Use ← → to move and SPACE to shoot</p>
+                            <button class="play-btn" onclick="startGame()">Start Game</button>
+                        </div>
+                        <canvas id="gameCanvas" width="560" height="360"></canvas>
+                        
+                        <!-- Mobile Controls -->
+                        <div class="mobile-controls">
+                            <button class="mobile-btn" ontouchstart="keys['ArrowLeft']=true" ontouchend="keys['ArrowLeft']=false">←</button>
+                            <button class="mobile-btn" ontouchstart="shoot()">🔥</button>
+                            <button class="mobile-btn" ontouchstart="keys['ArrowRight']=true" ontouchend="keys['ArrowRight']=false">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 </div>
 
 <script>
-function showTab(name, el) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(name + '-tab').classList.add('active');
-  el.classList.add('active');
-}
+    // Tab Navigation Logic
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
 
-function openGame() { document.getElementById('game-window').style.display = 'block'; }
-function closeGame() { document.getElementById('game-window').style.display = 'none'; game.active = false; }
-
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-
-let game = { active: false, score: 0, player: { x: 260, y: 320, width: 40, height: 20 }, bullets: [], invaders: [], invaderDirection: 1, invaderSpeed: 0.6 };
-
-function initInvaders() {
-  game.invaders = [];
-  for (let r = 0; r < 4; r++) for (let c = 0; c < 8; c++)
-    game.invaders.push({ x: c * 58 + 40, y: r * 38 + 30, width: 28, height: 18, alive: true });
-}
-
-const keys = {};
-document.addEventListener('keydown', e => {
-  keys[e.key] = true;
-  if (e.key === ' ' && game.active) { shoot(); e.preventDefault(); }
-});
-document.addEventListener('keyup', e => keys[e.key] = false);
-
-function shoot() {
-  game.bullets.push({ x: game.player.x + 18, y: game.player.y, width: 4, height: 10, speed: 6 });
-}
-
-function update() {
-  if (!game.active) return;
-  if (keys['ArrowLeft'] && game.player.x > 0) game.player.x -= 5;
-  if (keys['ArrowRight'] && game.player.x < canvas.width - game.player.width) game.player.x += 5;
-  game.bullets = game.bullets.filter(b => { b.y -= b.speed; return b.y > 0; });
-  let hitEdge = false;
-  game.invaders.forEach(inv => { if (!inv.alive) return; inv.x += game.invaderSpeed * game.invaderDirection; if (inv.x <= 0 || inv.x >= canvas.width - inv.width) hitEdge = true; });
-  if (hitEdge) { game.invaderDirection *= -1; game.invaders.forEach(inv => inv.y += 18); }
-  game.bullets.forEach(b => {
-    game.invaders.forEach(inv => {
-      if (inv.alive && b.x < inv.x + inv.width && b.x + b.width > inv.x && b.y < inv.y + inv.height && b.y + b.height > inv.y) {
-        inv.alive = false; b.y = -100; game.score += 10;
-      }
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-tab');
+            
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            
+            tab.classList.add('active');
+            document.getElementById(target + '-tab').classList.add('active');
+        });
     });
-  });
-  if (game.invaders.every(i => !i.alive)) { game.active = false; setTimeout(() => alert('You Win! Score: ' + game.score), 200); }
-  game.invaders.forEach(inv => { if (inv.alive && inv.y + inv.height >= game.player.y) { game.active = false; setTimeout(() => alert('Game Over! Score: ' + game.score), 200); } });
-}
 
-function draw() {
-  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-  if (!game.active) return;
-  ctx.fillStyle = '#00ff00';
-  ctx.fillRect(game.player.x, game.player.y, game.player.width, game.player.height);
-  ctx.fillStyle = '#ffffff';
-  game.bullets.forEach(b => ctx.fillRect(b.x, b.y, b.width, b.height));
-  game.invaders.forEach(inv => {
-    if (!inv.alive) return;
-    ctx.fillStyle = '#ff4444';
-    ctx.fillRect(inv.x, inv.y, inv.width, inv.height);
-  });
-  ctx.fillStyle = '#fff'; ctx.font = '14px Courier New';
-  ctx.fillText('Score: ' + game.score, 10, 22);
-}
+    // Game Logic
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const overlay = document.getElementById('game-overlay');
+    const overlayTitle = document.getElementById('overlay-title');
+    const overlayMsg = document.getElementById('overlay-msg');
 
-function startGame() {
-  game.active = true; game.score = 0; game.bullets = []; game.player.x = 260;
-  game.invaderSpeed = 0.6; game.invaderDirection = 1;
-  initInvaders();
-}
+    let game = { 
+        active: false, 
+        score: 0, 
+        player: { x: 260, y: 320, width: 40, height: 20 }, 
+        bullets: [], 
+        invaders: [], 
+        invaderDirection: 1, 
+        invaderSpeed: 0.8,
+        lastShootTime: 0
+    };
 
-(function loop() { update(); draw(); requestAnimationFrame(loop); })();
+    function openGame() {
+        document.getElementById('folder-list').style.display = 'none';
+        document.getElementById('game-window').style.display = 'block';
+    }
+
+    function closeGame() {
+        document.getElementById('folder-list').style.display = 'flex';
+        document.getElementById('game-window').style.display = 'none';
+        game.active = false;
+    }
+
+    function initInvaders() {
+        game.invaders = [];
+        const rows = 4;
+        const cols = 8;
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                game.invaders.push({ 
+                    x: c * 55 + 60, 
+                    y: r * 35 + 40, 
+                    width: 30, 
+                    height: 20, 
+                    alive: true 
+                });
+            }
+        }
+    }
+
+    const keys = {};
+    window.addEventListener('keydown', e => {
+        keys[e.key] = true;
+        if (e.key === ' ' && game.active) { 
+            shoot(); 
+            e.preventDefault(); 
+        }
+    });
+    window.addEventListener('keyup', e => keys[e.key] = false);
+
+    function shoot() {
+        const now = Date.now();
+        if (now - game.lastShootTime < 250) return; // Fire rate limit
+        game.bullets.push({ x: game.player.x + 18, y: game.player.y, width: 4, height: 10, speed: 7 });
+        game.lastShootTime = now;
+    }
+
+    function startGame() {
+        overlay.style.display = 'none';
+        game.active = true;
+        game.score = 0;
+        game.bullets = [];
+        game.player.x = canvas.width / 2 - 20;
+        game.invaderSpeed = 0.8;
+        game.invaderDirection = 1;
+        initInvaders();
+    }
+
+    function gameOver(win) {
+        game.active = false;
+        overlay.style.display = 'flex';
+        overlayTitle.innerText = win ? "YOU WON!" : "GAME OVER";
+        overlayTitle.style.color = win ? "#00ff00" : "#ff4444";
+        overlayMsg.innerText = "Final Score: " + game.score;
+    }
+
+    function update() {
+        if (!game.active) return;
+
+        // Player Movement
+        if (keys['ArrowLeft'] && game.player.x > 0) game.player.x -= 5;
+        if (keys['ArrowRight'] && game.player.x < canvas.width - game.player.width) game.player.x += 5;
+
+        // Bullet Logic
+        game.bullets = game.bullets.filter(b => {
+            b.y -= b.speed;
+            return b.y > 0;
+        });
+
+        // Invader Logic
+        let hitEdge = false;
+        let anyAlive = false;
+
+        game.invaders.forEach(inv => {
+            if (!inv.alive) return;
+            anyAlive = true;
+            inv.x += game.invaderSpeed * game.invaderDirection;
+            
+            if (inv.x <= 10 || inv.x >= canvas.width - inv.width - 10) hitEdge = true;
+            
+            // Check Game Over (Reach Bottom)
+            if (inv.y + inv.height >= game.player.y) {
+                gameOver(false);
+            }
+        });
+
+        if (hitEdge) {
+            game.invaderDirection *= -1;
+            game.invaders.forEach(inv => inv.y += 15);
+            game.invaderSpeed += 0.05; // Speed up slightly
+        }
+
+        if (!anyAlive) {
+            gameOver(true);
+        }
+
+        // Collision Logic
+        game.bullets.forEach(b => {
+            game.invaders.forEach(inv => {
+                if (inv.alive && 
+                    b.x < inv.x + inv.width && 
+                    b.x + b.width > inv.x && 
+                    b.y < inv.y + inv.height && 
+                    b.y + b.height > inv.y) {
+                    inv.alive = false;
+                    b.y = -100; // Remove bullet
+                    game.score += 10;
+                }
+            });
+        });
+    }
+
+    function draw() {
+        // Clear screen
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        if (!game.active && overlay.style.display === 'none') {
+            // Static background state
+            return;
+        }
+
+        // Draw Player (Ship)
+        ctx.fillStyle = '#00ff00';
+        ctx.beginPath();
+        ctx.moveTo(game.player.x + 20, game.player.y);
+        ctx.lineTo(game.player.x + 40, game.player.y + 20);
+        ctx.lineTo(game.player.x, game.player.y + 20);
+        ctx.fill();
+
+        // Draw Bullets
+        ctx.fillStyle = '#fff';
+        game.bullets.forEach(b => ctx.fillRect(b.x, b.y, b.width, b.height));
+
+        // Draw Invaders
+        game.invaders.forEach(inv => {
+            if (!inv.alive) return;
+            ctx.fillStyle = '#ff4444';
+            // Classic invader shape (pixel block)
+            ctx.fillRect(inv.x, inv.y, inv.width, inv.height);
+            // Detail
+            ctx.fillStyle = '#000';
+            ctx.fillRect(inv.x + 5, inv.y + 5, 5, 5);
+            ctx.fillRect(inv.x + 20, inv.y + 5, 5, 5);
+        });
+
+        // Score
+        ctx.fillStyle = '#00ff00';
+        ctx.font = 'bold 16px Courier New';
+        ctx.fillText('SCORE: ' + game.score.toString().padStart(4, '0'), 15, 25);
+    }
+
+    function loop() {
+        update();
+        draw();
+        requestAnimationFrame(loop);
+    }
+
+    loop();
 </script>
+</body>
+</html>
